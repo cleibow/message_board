@@ -1,0 +1,18 @@
+<p><a href="<%= user_path @bright_idea.user.id %>"><%=@bright_idea.user.name.titleize %></a> Says: <span class="idea_content"><%= @bright_idea.content %></span></p>
+<p><b>People who liked this post:</b></p>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Alias</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @bright_idea.users.distinct.each do |user| %>
+      <tr>
+        <td><a href="<%= user_path user.id %>"><%= user.alias.titleize %></a></td>
+        <td><%= user.name.titleize %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
